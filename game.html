@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="design.css">
+    <script src="stars.js" defer></script>
+    <script src="obstacles.js" defer></script>
+    <script src="cube.js" defer></script>
+    <title>Racing game</title>
+</head>
+
+<body>
+    <h1>Race the Earth / Car Edition /</h1>
+    <div class="bgd"></div>
+    <button class="pause-btn" onclick=""></button>
+    <div class="sun"></div>
+    <div class="road"></div>
+    
+    <div id="game-stats" style="position: absolute; top: 10px; right: 20px; color: white; font-family: 'Orbitron', sans-serif; z-index: 100;"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const stats = document.getElementById('game-stats');
+            let frameCount = 0;
+            let lastTime = performance.now();
+            
+            function updateStats() {
+                frameCount++;
+                const now = performance.now();
+                
+                if (now - lastTime >= 1000) {
+                    const fps = Math.round((frameCount * 1000) / (now - lastTime));
+                    stats.textContent = `FPS: ${fps}`;
+                    frameCount = 0;
+                    lastTime = now;
+                }
+                
+                requestAnimationFrame(updateStats);
+            }
+            
+            updateStats();
+        });
+    </script>
+</body>
+
+</html>
