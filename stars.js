@@ -10,6 +10,10 @@ const intervalFunction = setInterval(() => {
 }, 100);
 
 function stars(sun) {
+    if (window.gameState && window.gameState.isPaused()) {
+        return;
+    }
+
     const sunTop = sun.getBoundingClientRect().top;
     
     if (sunTop < 400) {
@@ -34,6 +38,10 @@ function stars(sun) {
         const fadeStart = sunTop - 400;
         
         const interval = setInterval(() => {
+            if (window.gameState && window.gameState.isPaused()) {
+                return;
+            }
+            
             position += 0.3;
             element.style.top = position + "px";
             

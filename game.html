@@ -5,42 +5,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="design.css">
     <script src="stars.js" defer></script>
     <script src="obstacles.js" defer></script>
     <script src="cube.js" defer></script>
+    <script src="pause.js" defer></script>
+    <script src="score.js" defer></script>
     <title>Racing game</title>
 </head>
 
 <body>
     <h1>Race the Earth / Car Edition /</h1>
+    <div id="overlay" style="display: none;"></div>
     <div class="bgd"></div>
-    <button class="pause-btn" onclick=""></button>
+    <div class="score" id="score"></div>
+    <button class="buttons" id="pauseBtn" onclick="document.getElementById('modal1').style.display = 'block'"><i class="material-icons">pause</i></button>
+
+    <div id="modal1" class="modal1">
+        <p>Paused</p>
+        <button type="button" onclick="document.getElementById('modal1').style.display='none'"
+            class="resumeBtn">Continue</button>
+    </div>
+
+
+    <button class="buttons" id="resetBtn" onclick="document.getElementById('modal2').style.display='block'; pause()"><i
+            class="fa fa-refresh"></i></button>
+
+    <div id="modal2" class="modal2">
+        <p>You want to restart the game. Are you sure?</p>
+        <button type="button" onclick="document.getElementById('modal2').style.display='none'; resume()"
+            class="cancelbtn">Cancel</button>
+        <button class="restart" onclick="location.reload()">Yes</button>
+    </div>
+
     <div class="sun"></div>
     <div class="road"></div>
-    
-    <div id="game-stats" style="position: absolute; top: 10px; right: 20px; color: white; font-family: 'Orbitron', sans-serif; z-index: 100;"></div>
-    
+
+    <div id="game-stats"
+        style="position: absolute; top: 10px; right: 20px; color: white; font-family: 'Orbitron', sans-serif; z-index: 100;">
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const stats = document.getElementById('game-stats');
             let frameCount = 0;
             let lastTime = performance.now();
-            
+
             function updateStats() {
                 frameCount++;
                 const now = performance.now();
-                
+
                 if (now - lastTime >= 1000) {
                     const fps = Math.round((frameCount * 1000) / (now - lastTime));
                     stats.textContent = `FPS: ${fps}`;
                     frameCount = 0;
                     lastTime = now;
                 }
-                
+
                 requestAnimationFrame(updateStats);
             }
-            
+
             updateStats();
         });
     </script>

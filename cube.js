@@ -1,6 +1,10 @@
-setTimeout(10000);
+let cubeInterval;
 
 function cube() {
+    if (window.gameState && window.gameState.isPaused()) {
+        return;
+    }
+    
     const container = document.createElement('div');
     container.className = 'container';
     container.style.position = 'absolute';
@@ -20,21 +24,8 @@ function cube() {
 
     container.appendChild(cube);
     document.body.appendChild(container);
-
-    let position = 50;
-
-    const interval = setInterval(() => {
-        position += 0.1;
-
-        container.style.top = position + "%";
-
-        if (position >= 100) {
-            clearInterval(interval);
-            container.remove();
-        }
-    }, 20);
 }
 
 setTimeout(() => {
-    setInterval(cube, 5000);
+    cubeInterval = setInterval(cube, 5000);
 }, 5000);
