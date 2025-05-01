@@ -1,4 +1,4 @@
-function spawnObstacle() {
+function obstacle() {
     if (window.gameState && window.gameState.isPaused()) return;
 
     const laneCount = 5;
@@ -29,9 +29,12 @@ function spawnObstacle() {
 
     let y = 50;
     const interval = setInterval(() => {
-        if (window.gameState && window.gameState.isPaused()) return;
+        if (window.gameState && window.gameState.isPaused()) {
+            return;
+        }
 
         y += 0.1;
+
         const scale = Math.min(1.5, 0.2 + ((y - 50) / 70) * 1.3);
         container.style.top = `${y}%`;
         container.style.transform = `scale(${scale})`;
@@ -43,4 +46,6 @@ function spawnObstacle() {
     }, 30);
 }
 
-setInterval(spawnObstacle, 1000);
+setTimeout(() => {
+    cubeInterval = setInterval(obstacle, 2000);
+}, 5000);
