@@ -1,8 +1,11 @@
 body,
 html {
+    perspective: 1000px;
     background-color: #121212;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    height: 100vh;
 }
 
 h1 {
@@ -10,10 +13,70 @@ h1 {
     color: white;
 }
 
-button {
+.button {
     font-size: xx-large;
     color: white;
-    right: 0;
     margin-top: 10px;
     background-color: #2e2e2e;
+}
+
+#colormodal {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    background: #2e2e2e;
+    padding: 10px;
+    border: 1px solid #ccc;
+    opacity: 0;
+    bottom: 0;
+}
+
+#close {
+    background-color: none;
+    border: none;
+}
+
+.color {
+    width: 100px;
+    height: 100px;
+}
+
+.color:nth-child(1) {
+    background-color: #2e2e2e;
+}
+
+.color:nth-child(2) {
+    background-color: red;
+}
+
+.color:nth-child(3) {
+    background-color: green;
+}
+
+.color:nth-child(4) {
+    background-color: blue;
+}
+
+.color:nth-child(5) {
+    background-color: black;
+}
+
+.color:nth-child(6) {
+    background-color: white;
+}
+
+.color:nth-child(7) {
+    background-color: brown;
+}
+
+.color:nth-child(8) {
+    background-color: yellow;
+}
+
+.color:nth-child(9) {
+    background-color: orange;
+}
+
+.color:nth-child(10) {
+    background-color: purple;
 }

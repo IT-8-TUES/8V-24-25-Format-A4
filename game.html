@@ -9,20 +9,28 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="car.css">
     <script src="stars.js" defer></script>
+    <script src="carInGame.js" defer></script>
     <script src="obstacles.js" defer></script>
     <script src="cube.js" defer></script>
     <script src="pause.js" defer></script>
     <script src="score.js" defer></script>
-    <title>Racing game</title>
+    <title>Race the Earth / Car Edition /</title>
 </head>
-
+<style>
+    #car {
+        bottom: 50px;
+        left: 50%;
+    }
+</style>
 <body>
     <h1>Race the Earth / Car Edition /</h1>
     <div id="overlay" style="display: none;"></div>
     <div class="bgd"></div>
     <div class="score" id="score"></div>
-    <button class="buttons" id="pauseBtn" onclick="document.getElementById('modal1').style.display = 'block'"><i class="material-icons">pause</i></button>
+    <button class="buttons" id="pauseBtn" onclick="document.getElementById('modal1').style.display = 'block'"><i
+            class="material-icons">pause</i></button>
 
     <div id="modal1" class="modal1">
         <p>Paused</p>
@@ -42,6 +50,103 @@
     </div>
 
     <div class="sun"></div>
+    <div id="car">
+        <div id="coupe">
+            <div id="side">
+                <div id="front"></div>
+                <div id="back"></div>
+                <div id="left"></div>
+                <div id="right"></div>
+                <div id="top"></div>
+                <div id="bottom"></div>
+                <div id="frontBumper"></div>
+                <div id="hood"></div>
+                <div id="rightFender"></div>
+                <div id="leftFender"></div>
+                <div id="rearWindow"></div>
+                <div id="headlightsFront1" class="headlightsFront"></div>
+                <div id="headlightsFront2" class="headlightsFront"></div>
+                <div id="headlightsBack1" class="headlightsBack"></div>
+                <div id="headlightsBack2" class="headlightsBack"></div>
+
+                <div id="frontRight" class="wheel">
+                    <div class="spinner">
+                        <div class="wheel-side">
+                            <div class="wheel-segment segment-1"></div>
+                            <div class="wheel-segment segment-2"></div>
+                            <div class="wheel-segment segment-3"></div>
+                            <div class="wheel-segment segment-4"></div>
+                            <div class="wheel-segment segment-5"></div>
+                            <div class="wheel-segment segment-6"></div>
+                            <div class="wheel-segment segment-7"></div>
+                            <div class="wheel-segment segment-8"></div>
+                            <div class="wheel-segment segment-9"></div>
+                            <div class="wheel-segment segment-10"></div>
+                            <div class="wheel-segment segment-11"></div>
+                            <div class="wheel-segment segment-12"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="frontLeft" class="wheel">
+                    <div class="spinner">
+                        <div class="wheel-side">
+                            <div class="wheel-segment segment-1"></div>
+                            <div class="wheel-segment segment-2"></div>
+                            <div class="wheel-segment segment-3"></div>
+                            <div class="wheel-segment segment-4"></div>
+                            <div class="wheel-segment segment-5"></div>
+                            <div class="wheel-segment segment-6"></div>
+                            <div class="wheel-segment segment-7"></div>
+                            <div class="wheel-segment segment-8"></div>
+                            <div class="wheel-segment segment-9"></div>
+                            <div class="wheel-segment segment-10"></div>
+                            <div class="wheel-segment segment-11"></div>
+                            <div class="wheel-segment segment-12"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="backRight" class="wheel">
+                    <div class="spinner">
+                        <div class="wheel-side">
+                            <div class="wheel-segment segment-1"></div>
+                            <div class="wheel-segment segment-2"></div>
+                            <div class="wheel-segment segment-3"></div>
+                            <div class="wheel-segment segment-4"></div>
+                            <div class="wheel-segment segment-5"></div>
+                            <div class="wheel-segment segment-6"></div>
+                            <div class="wheel-segment segment-7"></div>
+                            <div class="wheel-segment segment-8"></div>
+                            <div class="wheel-segment segment-9"></div>
+                            <div class="wheel-segment segment-10"></div>
+                            <div class="wheel-segment segment-11"></div>
+                            <div class="wheel-segment segment-12"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="backLeft" class="wheel">
+                    <div class="spinner">
+                        <div class="wheel-side">
+                            <div class="wheel-segment segment-1"></div>
+                            <div class="wheel-segment segment-2"></div>
+                            <div class="wheel-segment segment-3"></div>
+                            <div class="wheel-segment segment-4"></div>
+                            <div class="wheel-segment segment-5"></div>
+                            <div class="wheel-segment segment-6"></div>
+                            <div class="wheel-segment segment-7"></div>
+                            <div class="wheel-segment segment-8"></div>
+                            <div class="wheel-segment segment-9"></div>
+                            <div class="wheel-segment segment-10"></div>
+                            <div class="wheel-segment segment-11"></div>
+                            <div class="wheel-segment segment-12"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="road"></div>
 
     <div id="game-stats"
