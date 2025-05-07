@@ -4,6 +4,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = htmlspecialchars($_POST['email']);
   $password = htmlspecialchars($_POST['password']);
 }
+
+$score = $_GET['msg'] ?? 0; 
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link href="homeStyle.css" rel="stylesheet" />
   <link rel="stylesheet" href="car.css" />
   <script src="car.js" defer></script>
+  <script src="score.js" defer></script>
   <title>Race The Earth - Home</title>
 </head>
 <style>
@@ -30,7 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <div class="info">
     <h1>Welcome, <?php echo isset($name) ? $name : 'Guest'; ?></h1>
     <button class="button"><i class="fa fa-gear fa-spin"></i></button>
-    <button class="button"><i class="fa fa-line-chart"></i></button>
+    <button class="button"><i class="fa fa-line-chart" onclick = "document.getElementById('scoreModal').style.display = 'block'"></i></button>
+    <div id="scoreModal">
+      <p>Here you can see your previous score:</p>
+      <p><?php echo "Score: " . htmlspecialchars($score); ?></p>
+      <button class="button" id="close" onclick="document.getElementById('scoreModal').style.display = 'none'"><i class="fa fa-close"></i></button>
+    </div>
     <button class="button" onclick="location.href='game.html'"><i class="fa fa-gamepad"></i></button>
 
   <button class="button" onclick="document.getElementById('colormodal').style.opacity = '1'">
@@ -44,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <button onclick="colorChange('blue')" class="color"></button>
       <button onclick="colorChange('black')" class="color"></button>
       <button onclick="colorChange('white')" class="color"></button>
-      <button onclick="colorChange('brown')" class="color"></button>
+      <button onclick="colorChange('#5C4033')" class="color"></button>
       <button onclick="colorChange('yellow')" class="color"></button>
       <button onclick="colorChange('orange')" class="color"></button>
       <button onclick="colorChange('purple')" class="color"></button>

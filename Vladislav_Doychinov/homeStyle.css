@@ -66,7 +66,7 @@ h1 {
 }
 
 .color:nth-child(7) {
-    background-color: brown;
+    background-color: 	#5C4033;
 }
 
 .color:nth-child(8) {
@@ -79,4 +79,21 @@ h1 {
 
 .color:nth-child(10) {
     background-color: purple;
+}
+
+#scoreModal {
+    z-index: 15000;
+    position: fixed;
+    display: none;
+    background-color: #2E2E2E;
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+    font-size: large;
+    height: auto;
+    width: 40vw;
+    padding: 2vh;
+    top: 45%;
+    left: 30%;
+    text-align: center;
+    box-shadow: 0 0 20px grey, 0 0 35px black;
 }
