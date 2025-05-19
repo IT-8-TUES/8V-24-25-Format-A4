@@ -1,22 +1,9 @@
-const car = document.getElementById('side');
-let angleX = 0;
-let angleY = 0;
-
-window.onkeydown = function (event) {
-    if (event.key === 'ArrowRight') {
-        angleY += 10;
-    } else if (event.key === 'ArrowLeft') {
-        angleY -= 10;
-    } else if (event.key === 'ArrowUp') {
-        angleX += 10;
-    } else if (event.key === 'ArrowDown') {
-        angleX -= 10;
-    }
-
-    car.style.transform = `rotateY(${angleY}deg) rotateX(${angleX}deg)`;
-};
-
+/**
+ @param {string} color
+*/
 function colorChange(color) {
+    console.log('Changing car color to:', color);
+
     const carParts = [
         document.getElementById('front'),
         document.getElementById('back'),
@@ -32,6 +19,29 @@ function colorChange(color) {
     carParts.forEach(part => {
         if (part) {
             part.style.backgroundColor = color;
+        } else {
+            console.warn('Car part not found!');
         }
     });
+
+    localStorage.setItem('carColor', color);
+    console.log('Color saved to localStorage:', color);
 }
+
+function loadCarColor() {
+    const savedColor = localStorage.getItem('carColor');
+    
+    if (savedColor) {
+        setTimeout(() => {
+            colorChange(savedColor);
+        }, 200);
+    } 
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadCarColor();
+});
+
+window.colorChange = colorChange;
+window.loadCarColor = loadCarColor;
+
