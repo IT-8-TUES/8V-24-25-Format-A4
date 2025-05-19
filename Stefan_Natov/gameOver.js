@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     let isGameRunning = true;
     let gameLoopId = null;
-    const score = document.getElementById('score');
 
     function gameOver() {
       console.log('Game Over!');
