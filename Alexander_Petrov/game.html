@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="car.css">
+    <script src="car.js" defer></script>
+    <script src="stars.js" defer></script>
+    <script src="carInGame.js" defer></script>
+    <script src="obstacles.js" defer></script>
+    <script src="cube.js" defer></script>
+    <script src="pause.js" defer></script>
+    <script src="score.js" defer></script>
+    <script src="gameOver.js" defer></script>
+    <title>Race the Earth / Car Edition /</title>
+</head>
+<style>
+    #car {
+        bottom: 50px;
+        left: 50%;
+    }
+</style>
+
+<body>
+    <h1>Race the Earth / Car Edition /</h1>
+    <div id="overlay"></div>
+    <div class="bgd"></div>
+    <div class="score" id="score"></div>
+    <button class="buttons" id="homeBtn"
+        onclick="pause(); document.getElementById('homeModal').style.display = 'block'"><i class="fa fa-home">
+        </i></button>
+
+    <div id="homeModal">
+        <p>You want to go back to the homepage. Are you sure?</p>
+        <button type="button" onclick="location.href='home.php'" class="cancelbtn">Yes</button>
+        <button class="restart"
+            onclick="resume(); document.getElementById('homeModal').style.display = 'none'">Cancel</button>
+    </div>
+
+    <button class="buttons" id="pauseBtn" onclick="document.getElementById('modal1').style.display = 'block'"><i
+            class="material-icons">pause</i></button>
+
+    <div id="modal1" class="modal1">
+        <p>Paused</p>
+        <button type="button" onclick="document.getElementById('modal1').style.display='none'"
+            class="resumeBtn">Continue</button>
+    </div>
+
+
+    <button class="buttons" id="resetBtn" onclick="document.getElementById('modal2').style.display='block'; pause()"><i
+            class="fa fa-refresh"></i></button>
+
+    <div id="modal2" class="modal2">
+        <p>You want to restart the game. Are you sure? You 'll lose your process.</p>
+        <button type="button" onclick="document.getElementById('modal2').style.display='none'; resume()"
+            class="cancelbtn">Cancel</button>
+        <button class="restart" onclick="location.reload()">Yes</button>
+    </div>
+
+    <div id="gameOverModal">
+        <p>Sorry! You lost! Play better next time!</p>
+        <button type="button" onclick="saveCollect()" class="cancelbtn">Go back to Home</button>
+        <button class="restart" onclick="location.reload()">Try again</button>
+    </div>
+
+    <div class="sun"></div>
+    <div id="car">
+        <div id="coupe">
+            <div id="side">
+                <div id="front"></div>
+                <div id="back"></div>
+                <div id="left"></div>
+                <div id="right"></div>
+                <div id="top"></div>
+                <div id="bottom"></div>
+                <div id="frontBumper"></div>
+                <div id="hood"></div>
+                <div id="rightFender"></div>
+                <div id="leftFender"></div>
+                <div id="rearWindow"></div>
+                <div id="headlightsFront1" class="headlightsFront"></div>
+                <div id="headlightsFront2" class="headlightsFront"></div>
+                <div id="headlightsBack1" class="headlightsBack"></div>
+                <div id="headlightsBack2" class="headlightsBack"></div>
+
+                <div id="frontRight" class="wheel">
+                    <div class="spinner">
+                        <div class="wheel-side">
+                            <div class="wheel-segment segment-1"></div>
+                            <div class="wheel-segment segment-2"></div>
+                            <div class="wheel-segment segment-3"></div>
+                            <div class="wheel-segment segment-4"></div>
+                            <div class="wheel-segment segment-5"></div>
+                            <div class="wheel-segment segment-6"></div>
+                            <div class="wheel-segment segment-7"></div>
+                            <div class="wheel-segment segment-8"></div>
+                            <div class="wheel-segment segment-9"></div>
+                            <div class="wheel-segment segment-10"></div>
+                            <div class="wheel-segment segment-11"></div>
+                            <div class="wheel-segment segment-12"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="frontLeft" class="wheel">
+                    <div class="spinner">
+                        <div class="wheel-side">
+                            <div class="wheel-segment segment-1"></div>
+                            <div class="wheel-segment segment-2"></div>
+                            <div class="wheel-segment segment-3"></div>
+                            <div class="wheel-segment segment-4"></div>
+                            <div class="wheel-segment segment-5"></div>
+                            <div class="wheel-segment segment-6"></div>
+                            <div class="wheel-segment segment-7"></div>
+                            <div class="wheel-segment segment-8"></div>
+                            <div class="wheel-segment segment-9"></div>
+                            <div class="wheel-segment segment-10"></div>
+                            <div class="wheel-segment segment-11"></div>
+                            <div class="wheel-segment segment-12"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="backRight" class="wheel">
+                    <div class="spinner">
+                        <div class="wheel-side">
+                            <div class="wheel-segment segment-1"></div>
+                            <div class="wheel-segment segment-2"></div>
+                            <div class="wheel-segment segment-3"></div>
+                            <div class="wheel-segment segment-4"></div>
+                            <div class="wheel-segment segment-5"></div>
+                            <div class="wheel-segment segment-6"></div>
+                            <div class="wheel-segment segment-7"></div>
+                            <div class="wheel-segment segment-8"></div>
+                            <div class="wheel-segment segment-9"></div>
+                            <div class="wheel-segment segment-10"></div>
+                            <div class="wheel-segment segment-11"></div>
+                            <div class="wheel-segment segment-12"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="backLeft" class="wheel">
+                    <div class="spinner">
+                        <div class="wheel-side">
+                            <div class="wheel-segment segment-1"></div>
+                            <div class="wheel-segment segment-2"></div>
+                            <div class="wheel-segment segment-3"></div>
+                            <div class="wheel-segment segment-4"></div>
+                            <div class="wheel-segment segment-5"></div>
+                            <div class="wheel-segment segment-6"></div>
+                            <div class="wheel-segment segment-7"></div>
+                            <div class="wheel-segment segment-8"></div>
+                            <div class="wheel-segment segment-9"></div>
+                            <div class="wheel-segment segment-10"></div>
+                            <div class="wheel-segment segment-11"></div>
+                            <div class="wheel-segment segment-12"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="road"></div>
+
+    <div id="gameStats"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const stats = document.getElementById('gameStats');
+            let frameCount = 0;
+            let lastTime = performance.now();
+
+            function updateStats() {
+                frameCount++;
+                const now = performance.now();
+
+                if (now - lastTime >= 1000) {
+                    const fps = Math.round((frameCount * 1000) / (now - lastTime));
+                    stats.textContent = `FPS: ${fps}`;
+                    frameCount = 0;
+                    lastTime = now;
+                }
+
+                requestAnimationFrame(updateStats);
+            }
+
+            updateStats();
+        });
+    </script>
+</body>
+
+</html>
