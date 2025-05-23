@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    font-family: 'Bebas Neue', cursive;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.allModal, #warningModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1500;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2E2E2E;
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+    font-size: large;
+    box-shadow: 0 0 20px grey, 0 0 35px black;
+    border-radius: 8px;
+    width: 20vw;
+    padding: 20px;
+}
+
+input {
+    width: 100%;
+    margin: 10px 0;
+    font-size: large;
+    background-color: #2E2E2E;
+    border: 1px solid whitesmoke;
+    border-radius: 4px;
+    padding: 10px;
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+}
+
+.loginBtn, .justplay, .yes, .close {
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    font-size: large;
+    font-family: 'Bebas Neue', cursive;
+    margin-top: 10px;
+}
+
+.loginBtn, .justplay, .yes {
+    background-color: #2e2e2e;
+    color: white;
+    border-radius: 4px;
+}
+
+.close {
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.toggle-password {
+    background: none;
+    font-family: 'Bebas Neue', cursive;
+    color: #666;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+#warningModal {
+    padding: 10px;
+    display: none;
+}
+
+a {
+    color: #04AA6D;
+}
