@@ -39,7 +39,7 @@ function cube() {
     const interval = setInterval(() => {
         if (window.gameState && window.gameState.isPaused()) return;
 
-        y += 0.1;
+        y += 0.3;
 
         const scale = Math.min(1.5, 0.2 + ((y - 50) / 70) * 1.3);
         container.style.top = `${y}%`;
