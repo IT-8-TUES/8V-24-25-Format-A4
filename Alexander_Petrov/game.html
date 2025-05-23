@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="design.css">
     <link rel="stylesheet" href="car.css">
+    <script src="car.js" defer></script>
     <script src="stars.js" defer></script>
     <script src="carInGame.js" defer></script>
     <script src="obstacles.js" defer></script>
@@ -28,17 +29,18 @@
 
 <body>
     <h1>Race the Earth / Car Edition /</h1>
-    <div id="overlay" style="display: none;"></div>
+    <div id="overlay"></div>
     <div class="bgd"></div>
     <div class="score" id="score"></div>
-    <button class="buttons" id="homeBtn" onclick="pause(); document.getElementById('homeModal').style.display = 'block'"><i
-            class="fa fa-home">
+    <button class="buttons" id="homeBtn"
+        onclick="pause(); document.getElementById('homeModal').style.display = 'block'"><i class="fa fa-home">
         </i></button>
 
     <div id="homeModal">
         <p>You want to go back to the homepage. Are you sure?</p>
         <button type="button" onclick="location.href='home.php'" class="cancelbtn">Yes</button>
-        <button class="restart" onclick="resume(); document.getElementById('homeModal').style.display = 'none'">Cancel</button>
+        <button class="restart"
+            onclick="resume(); document.getElementById('homeModal').style.display = 'none'">Cancel</button>
     </div>
 
     <button class="buttons" id="pauseBtn" onclick="document.getElementById('modal1').style.display = 'block'"><i
@@ -63,7 +65,7 @@
 
     <div id="gameOverModal">
         <p>Sorry! You lost! Play better next time!</p>
-        <button type="button" onclick="saveScore()" class="cancelbtn">Go back to Home</button>
+        <button type="button" onclick="saveCollect()" class="cancelbtn">Go back to Home</button>
         <button class="restart" onclick="location.reload()">Try again</button>
     </div>
 
@@ -167,13 +169,11 @@
     </div>
     <div class="road"></div>
 
-    <div id="game-stats"
-        style="position: absolute; top: 10px; right: 20px; color: white; font-family: 'Orbitron', sans-serif; z-index: 100;">
-    </div>
+    <div id="gameStats"></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const stats = document.getElementById('game-stats');
+            const stats = document.getElementById('gameStats');
             let frameCount = 0;
             let lastTime = performance.now();
 
