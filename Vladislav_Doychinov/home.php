@@ -54,19 +54,20 @@ if (isset($_SESSION['id'])) {
             $update1->close();
         }
 
-        if ($score > $currentScore) {
-            $update = $conn->prepare("UPDATE users SET Score = ? WHERE ID = ?");
-            $update->bind_param("ii", $score, $id);
+      if ($score > $currentScore) {
+        $update = $conn->prepare("UPDATE users SET Score = ? WHERE ID = ?");
+        $update->bind_param("ii", $score, $id);
 
-            if ($update->execute()) {
-                $message = "<p>Here you can see your score:</p><p style='color: green;'>NEW HIGHEST SCORE! Congratulations! Highest score:<b> $score</b></p>";
-            }
-            $update->close();
-        } else if ($score !== 0){
-            $message = "<p>Here you can see your score:</p><p style='color: yellow;'>Highest score: $currentScore</p> score: $score</p>";
-        } else {
-            $message = "<p>Here you can see your score:</p><p style='color: yellow;'>Highest score: $currentScore</p>";
+        if ($update->execute()) {
+          $message = "<p>Here you can see your score:</p><p style='color: green;'>NEW HIGHEST SCORE! Congratulations! Highest score:<b> $score</b></p>";
         }
+        $update->close();
+      } else if ($score <= $currentScore) {
+        $message = "<p>Here you can see your score:</p><p style='color: yellow;'>Highest score: $currentScore</p><p>Score: $score</p>";
+        if ($score === 0) {
+          $message = "<p>Here you can see your score:</p><p style='color: yellow;'>Highest score: $currentScore</p>";
+        }
+      }
     }
 } else {
     $message = "<p>User not logged in.</p>";
